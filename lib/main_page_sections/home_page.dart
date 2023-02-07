@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const IntroBar(),
-            const LineChart(),
+            const ChartSection(),
             const AnalystRatings(),
             const Portfolio(),
             const SizedBox(
@@ -149,33 +149,36 @@ class IntroBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: const CircleAvatar(
-        foregroundImage: AssetImage('assets/images/matic_logo.jpg'),
-      ),
-      title: const Text(
-        "\u{20B9}94.634",
-        style: TextStyle(color: Colors.white),
-      ),
-      subtitle: const Text(
-        "MATIC",
-        style: TextStyle(color: AppColors.PRIMARY_COLOR),
-      ),
-      trailing: Padding(
-        padding: EdgeInsets.only(top: 15, bottom: 15),
-        child: TextButton(
-          onPressed: () {},
-          style: ButtonStyle(
-              padding: MaterialStateProperty.all<EdgeInsets>(
-                  const EdgeInsets.only(left: 10, right: 10)),
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              ))),
-          child: const Text(
-            "Discuss >>",
-            style: TextStyle(color: Colors.black, fontSize: 11),
+    return Container(
+      color: Colors.black,
+      child: ListTile(
+        leading: const CircleAvatar(
+          foregroundImage: AssetImage('assets/images/matic_logo.jpg'),
+        ),
+        title: const Text(
+          "\u{20B9}94.634",
+          style: TextStyle(color: Colors.white),
+        ),
+        subtitle: const Text(
+          "MATIC",
+          style: TextStyle(color: AppColors.PRIMARY_COLOR),
+        ),
+        trailing: Padding(
+          padding: EdgeInsets.only(top: 15, bottom: 15),
+          child: TextButton(
+            onPressed: () {},
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                    const EdgeInsets.only(left: 10, right: 10)),
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ))),
+            child: const Text(
+              "Discuss >>",
+              style: TextStyle(color: Colors.black, fontSize: 11),
+            ),
           ),
         ),
       ),
@@ -183,16 +186,16 @@ class IntroBar extends StatelessWidget {
   }
 }
 
-class LineChart extends StatefulWidget {
-  const LineChart({
+class ChartSection extends StatefulWidget {
+  const ChartSection({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<LineChart> createState() => _LineChartState();
+  State<ChartSection> createState() => _ChartSectionState();
 }
 
-class _LineChartState extends State<LineChart> {
+class _ChartSectionState extends State<ChartSection> {
   int button = 1;
   int graphNumber = 1;
   bool? maValue = false;
@@ -209,6 +212,7 @@ class _LineChartState extends State<LineChart> {
       children: [
         Column(
           children: [
+            SizedBox(height: 12,),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 0, 0, 15),
                 color: Color(0xFF111115),
@@ -219,7 +223,7 @@ class _LineChartState extends State<LineChart> {
           ],
         ),
         Positioned(
-          top: 350,
+          top: 362,
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(horizontal: 16),
@@ -290,7 +294,7 @@ class _LineChartState extends State<LineChart> {
         ),
         graphNumber == 0
             ? Positioned(
-                top: 305,
+                top: 317,
                 right: 16,
                 child: Container(
                   height: 40,
@@ -301,6 +305,81 @@ class _LineChartState extends State<LineChart> {
                 ),
               )
             : Container(),
+        Positioned(
+          top: 5,
+          left: 16,
+          child: Container(
+            child: graphNumber==1?Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.stacked_line_chart,color: Colors.green,size: 15,),
+                      Text("2.79%",style: TextStyle(color: Colors.green,fontSize: 10),)
+                    ],
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                  decoration: const BoxDecoration(
+                    color: AppColors.METRIC_COLOR,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  child: Center(child: Text("Ascending angle",style: TextStyle(fontSize: 10,color: Color(0xFF98B5FF)),),),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                  decoration: const BoxDecoration(
+                    color: AppColors.METRIC_COLOR,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  child: Center(child: Text("High Exposure",style: TextStyle(fontSize: 10,color: Colors.red),),),
+                ),
+              ],
+            ):Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(Icons.stacked_line_chart,color: Colors.green,size: 15,),
+                      Text("2.79%",style: TextStyle(color: Colors.green,fontSize: 10),)
+                    ],
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                  decoration: const BoxDecoration(
+                    color: AppColors.METRIC_COLOR,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  child: Center(child: Text("MA",style: TextStyle(fontSize: 10,color: Color(0xFF98B5FF)),),),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                  decoration: const BoxDecoration(
+                    color: AppColors.METRIC_COLOR,
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                  ),
+                  child: Center(child: Text("RSI",style: TextStyle(fontSize: 10,color: Color(0xFF98B5FF)),),),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
