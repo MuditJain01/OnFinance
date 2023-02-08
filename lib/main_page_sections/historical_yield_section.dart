@@ -28,7 +28,7 @@ class _HistoricalYieldSectionState extends State<HistoricalYieldSection> {
           left: 0,
           right: 0,
           child: Container(
-            height: 300,
+            height: 325,
             width: MediaQuery.of(context).size.width,
             margin: const EdgeInsets.only(left: 10,right: 10),
             color: Colors.black,
@@ -192,7 +192,7 @@ class HistoricalYieldContainer extends StatelessWidget {
         Column(
           children: [
             Container(
-              height: 300.0,
+              height: 325.0,
               decoration: const BoxDecoration(
                 color: Color(0xff282831),
               ),

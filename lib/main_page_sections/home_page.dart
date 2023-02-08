@@ -230,62 +230,81 @@ class _ChartSectionState extends State<ChartSection> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
+                Expanded(
+                  flex: 6,
+                  child: Container(
+                      height: 40,
+                      width: 250,
+                      decoration: const BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.all(Radius.circular(5))),
+                      padding: EdgeInsets.all(5),
+                      child: Center(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              periodButton(
+                                  title: '1H',
+                                  onTap: () {
+                                    setButton(1);
+                                  },
+                                  i: 1),
+                              periodButton(
+                                  title: '1D',
+                                  onTap: () {
+                                    setButton(2);
+                                  },
+                                  i: 2),
+                              periodButton(
+                                  title: '1W',
+                                  onTap: () {
+                                    setButton(3);
+                                  },
+                                  i: 3),
+                              periodButton(
+                                  title: '1M',
+                                  onTap: () {
+                                    setButton(4);
+                                  },
+                                  i: 4),
+                              // periodButton(
+                              //     title: '5Y',
+                              //     onTap: () {
+                              //       setButton(5);
+                              //     },
+                              //     i: 5),
+                              // periodButton(
+                              //     title: '5Y',
+                              //     onTap: () {
+                              //       setButton(5);
+                              //     },
+                              //     i: 5),
+                            ],
+                          ),
+                        ),
+                      )),
+                ),
+                SizedBox(width: 10,),
+                Expanded(
+                  flex: 1,
+                  child: Container(
                     height: 40,
                     decoration: const BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.all(Radius.circular(5))),
-                    padding: EdgeInsets.all(5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        periodButton(
-                            title: '1H',
-                            onTap: () {
-                              setButton(1);
-                            },
-                            i: 1),
-                        periodButton(
-                            title: '1D',
-                            onTap: () {
-                              setButton(2);
-                            },
-                            i: 2),
-                        periodButton(
-                            title: '1W',
-                            onTap: () {
-                              setButton(3);
-                            },
-                            i: 3),
-                        periodButton(
-                            title: '1M',
-                            onTap: () {
-                              setButton(4);
-                            },
-                            i: 4),
-                        periodButton(
-                            title: '5Y',
-                            onTap: () {
-                              setButton(5);
-                            },
-                            i: 5),
-                      ],
-                    )),
-                Container(
-                  height: 40,
-                  decoration: const BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.all(Radius.circular(4))),
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        graphNumber = 1 - graphNumber;
-                      });
-                    },
-                    color: Colors.greenAccent,
-                    icon: graphNumber == 1
-                        ? Icon(Icons.candlestick_chart)
-                        : Icon(Icons.stacked_line_chart),
+                        borderRadius: BorderRadius.all(Radius.circular(4))),
+                    child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          graphNumber = 1 - graphNumber;
+                        });
+                      },
+                      color: Colors.greenAccent,
+                      icon: graphNumber == 1
+                          ? Icon(Icons.candlestick_chart)
+                          : Icon(Icons.stacked_line_chart),
+                    ),
                   ),
                 )
               ],
