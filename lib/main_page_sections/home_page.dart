@@ -269,18 +269,12 @@ class _ChartSectionState extends State<ChartSection> {
                                     setButton(4);
                                   },
                                   i: 4),
-                              // periodButton(
-                              //     title: '5Y',
-                              //     onTap: () {
-                              //       setButton(5);
-                              //     },
-                              //     i: 5),
-                              // periodButton(
-                              //     title: '5Y',
-                              //     onTap: () {
-                              //       setButton(5);
-                              //     },
-                              //     i: 5),
+                              periodButton(
+                                  title: '5Y',
+                                  onTap: () {
+                                    setButton(5);
+                                  },
+                                  i: 5),
                             ],
                           ),
                         ),
